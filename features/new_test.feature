@@ -1,7 +1,7 @@
 Feature: Тестирование списка пользователей API
 
-  Scenario: Получение списка пользователей
+ Scenario: Получение уникального пользователя
     Given Домен данного API: https://reqres.in/
-    When Пользователь отправляет get-запрос с ендпоинтом: "api/users?page=2"
-    Then Пользователь должен получить со статус кодом 200
-    And Ожидаем получить указанный JSON ответ: {expected_response_body}
+    When Пользователь отправляет get-запрос с ендпоинтом: "api/users/2"
+    Then Пользователь должен получить ответ со статус кодом 200
+    And Пользователь должен получить следующий JSON ответ: {"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}}
