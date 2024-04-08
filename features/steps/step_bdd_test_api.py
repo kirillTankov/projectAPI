@@ -35,3 +35,17 @@ def step_then_get_json_response(context, json_response):
     assert actual_response == expected_response
 
 
+@When('Пользователь отправляет тело запроса: {request_body}')
+def step_when_send_request_body(context, request_body):
+    context.request_body = request_body
+
+
+@then('Пользователь должен получить ответ со статус кодом: "{code}"')
+def step_then_get_test_status_code(context, code):
+    assert context.response.status_code == eval(code)
+
+
+@then('Пользователь должен получить следующий JSON ответ: {expected_response_body}')
+def step_then_get_expected_resnonse_body(context, expected_response_body):
+    assert context.response.json() == eval(expected_response_body)
+
